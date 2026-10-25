@@ -84,6 +84,16 @@ export const showreel = {
 
 export const projects: Project[] = [
   {
+    title: 'Energyze Comparison',
+    client: 'Energyze',
+    category: 'Social',
+    year: '2026',
+    role: 'Edit · Color grade',
+    duration: '0:49',
+    media: { type: 'youtube', id: '2Mu3VSVpEac' },
+    orientation: 'portrait',
+  },
+  {
     title: 'Ignite the Night',
     client: 'Blaze Energy',
     category: 'Commercial',
