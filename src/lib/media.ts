@@ -9,6 +9,24 @@ export function youtubeEmbed(id: string) {
   return `https://www.youtube-nocookie.com/embed/${id}?${params}`
 }
 
+/** Muted, chrome-free, endlessly looping embed for use as a background. */
+export function youtubeBackgroundEmbed(id: string) {
+  const params = new URLSearchParams({
+    autoplay: '1',
+    mute: '1',
+    loop: '1',
+    playlist: id, // required for loop to work on a single video
+    controls: '0',
+    disablekb: '1',
+    fs: '0',
+    iv_load_policy: '3',
+    modestbranding: '1',
+    playsinline: '1',
+    rel: '0',
+  })
+  return `https://www.youtube-nocookie.com/embed/${id}?${params}`
+}
+
 const compact = new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 })
 
 /** 2400000 → "2.4M" */

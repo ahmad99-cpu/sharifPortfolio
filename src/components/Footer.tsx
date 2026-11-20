@@ -35,7 +35,7 @@ export default function Footer() {
             ref={topRef}
             type="button"
             onClick={() => scrollToTarget(0)}
-            className="group flex h-24 w-24 shrink-0 flex-col items-center justify-center gap-1 rounded-full border border-line text-xs transition-[border-color,background-color,color,transform] duration-500 ease-expo hover:border-accent hover:bg-accent hover:text-ink"
+            className="group flex h-24 w-24 shrink-0 flex-col items-center justify-center gap-1 rounded-full border border-line text-xs transition-[border-color,background-color,color,transform] duration-500 ease-expo hover:border-accent hover:bg-accent hover:text-paper"
           >
             <svg viewBox="0 0 16 16" className="h-4 w-4 transition-transform duration-500 ease-expo group-hover:-translate-y-1" fill="none" aria-hidden>
               <path d="M8 13V3M3.5 7.5L8 3l4.5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { comparisons } from '../data/content'
 import BeforeAfterSlider from './BeforeAfterSlider'
+import PortraitComparison from './PortraitComparison'
 import { Reveal } from './ui/Reveal'
 import SectionHeader from './ui/SectionHeader'
 
@@ -22,8 +23,7 @@ export default function BeforeAfter() {
           ]}
           aside={
             <p className="text-base leading-relaxed text-mute">
-              Drag the handle across the frame to see the camera original against the final grade. Use the arrow keys
-              if you prefer.
+              Compare the camera original with the finished cut: side by side, or drag the handle across the frame.
             </p>
           }
         />
@@ -81,7 +81,11 @@ export default function BeforeAfter() {
           <Reveal delay={150} className="min-w-0 lg:col-span-8">
             <div id="comparison-panel" role="tabpanel" aria-label={current.title}>
               <div key={active} className="fade-in">
-                <BeforeAfterSlider comparison={current} />
+                {current.orientation === 'portrait' ? (
+                  <PortraitComparison comparison={current} />
+                ) : (
+                  <BeforeAfterSlider comparison={current} />
+                )}
                 <div className="mt-5 flex flex-col gap-2 md:flex-row md:items-start md:justify-between md:gap-10">
                   <p className="font-mono text-[11px] tracking-[0.14em] text-accent uppercase">{current.tag}</p>
                   <p className="max-w-xl text-sm leading-relaxed text-mute md:text-base">{current.description}</p>

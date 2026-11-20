@@ -39,11 +39,18 @@ export interface Comparison {
   title: string
   tag: string
   description: string
-  kind: 'image' | 'video'
+  /** 'youtube' takes video ids for before/after (vertical showcase only); no hosting cost. */
+  kind: 'image' | 'video' | 'youtube'
   before: string
   after: string
   beforeLabel?: string
   afterLabel?: string
+  /** Vertical (9:16) footage gets the side-by-side showcase with a slider mode. */
+  orientation?: Orientation
+  beforePoster?: string
+  afterPoster?: string
+  /** The "after" file has a soundtrack: shows a sound toggle. */
+  hasAudio?: boolean
   /**
    * Demo helper: renders the "before" layer desaturated and flat like ungraded LOG footage.
    * Leave off when you supply a real ungraded source file.
@@ -76,8 +83,11 @@ export const site = {
 }
 
 export const showreel = {
-  /** Muted background loop in the hero. Keep it short and light (<8 MB). */
-  background: { src: clip('Jellyfish', 1080), poster: undefined as string | undefined },
+  /**
+   * Muted loop behind the hero headline. A YouTube video costs no hosting bandwidth;
+   * a self-hosted MP4 ({ type: 'video', src }) starts faster and loops more cleanly (keep it <8 MB).
+   */
+  background: { type: 'youtube', id: '615cdYG6ES4' } as Media,
   /** What plays when someone hits "Watch showreel". */
   full: { type: 'youtube', id: '615cdYG6ES4' } as Media,
 }
@@ -144,6 +154,21 @@ export const projects: Project[] = [
 ]
 
 export const comparisons: Comparison[] = [
+  {
+    title: 'Energyze comparison',
+    tag: 'Edit · Captions · Color',
+    description:
+      'Raw phone takes turned into a paced, captioned product ad: tighter cuts, punch-ins, split-screen moments and a warmer grade.',
+    kind: 'video',
+    orientation: 'portrait',
+    // Self-hosted: no YouTube overlays and frame-accurate sync. Also on YouTube (unlisted):
+    // before youtube.com/shorts/JD4_UWqAay4, after youtube.com/shorts/6_fpzHMbEdQ
+    before: '/videos/energyze-before.mp4',
+    after: '/videos/energyze-after.mp4',
+    beforePoster: '/videos/energyze-before.jpg',
+    afterPoster: '/videos/energyze-after.jpg',
+    hasAudio: true,
+  },
   {
     title: 'Cinematic color grade',
     tag: 'Color',

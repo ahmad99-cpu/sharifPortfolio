@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from 'react'
 import About from './components/About'
 import BeforeAfter from './components/BeforeAfter'
 import Contact from './components/Contact'
-import Cursor from './components/Cursor'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Marquee from './components/Marquee'
@@ -50,7 +49,6 @@ function App() {
   return (
     <>
       {loading && <Preloader onReveal={reveal} onDone={finishLoading} />}
-      <Cursor />
       <div className="grain" aria-hidden />
       <Nav ready={ready} />
 

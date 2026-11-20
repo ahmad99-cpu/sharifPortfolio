@@ -59,7 +59,6 @@ export default function Contact() {
               <button
                 type="button"
                 onClick={copyEmail}
-                data-cursor={copied ? 'Copied' : 'Copy'}
                 className="group flex flex-wrap items-center gap-x-4 gap-y-3 text-left"
               >
                 <span className="link-line pb-1 text-[clamp(1.25rem,2.4vw,2.5rem)] tracking-[-0.03em] whitespace-nowrap">
@@ -67,7 +66,7 @@ export default function Contact() {
                 </span>
                 <span
                   className={`flex h-10 shrink-0 items-center gap-2 overflow-hidden rounded-full border px-3 font-mono text-[10px] tracking-[0.14em] uppercase transition-colors duration-500 ${
-                    copied ? 'border-accent bg-accent text-ink' : 'border-line text-mute group-hover:border-paper/40 group-hover:text-paper'
+                    copied ? 'border-accent bg-accent text-paper' : 'border-line text-mute group-hover:border-paper/40 group-hover:text-paper'
                   }`}
                   aria-live="polite"
                 >
@@ -86,7 +85,7 @@ export default function Contact() {
             </Reveal>
 
             <Reveal delay={200}>
-              <MagneticButton href={mailto} cursor="Email">
+              <MagneticButton href={mailto}>
                 Email me
                 <span className="relative h-3.5 w-3.5 overflow-hidden">
                   <Arrow className="absolute inset-0 transition-transform duration-500 ease-expo group-hover:translate-x-4 group-hover:-translate-y-4" />

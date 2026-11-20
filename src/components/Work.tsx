@@ -37,7 +37,7 @@ function ViewCount({ views }: { views: number }) {
     <span
       ref={ref}
       aria-label={`${formatViews(views)} views`}
-      className="flex shrink-0 items-center gap-1.5 rounded-full border border-paper/15 bg-ink/50 py-1.5 pr-3 pl-2.5 font-mono text-[11px] text-paper tabular-nums backdrop-blur-md transition-[background-color,border-color,color] duration-500 ease-expo group-hover:border-accent group-hover:bg-accent group-hover:text-ink"
+      className="flex shrink-0 items-center gap-1.5 rounded-full border border-paper/15 bg-ink/50 py-1.5 pr-3 pl-2.5 font-mono text-[11px] text-paper tabular-nums backdrop-blur-md transition-[background-color,border-color,color] duration-500 ease-expo group-hover:border-accent group-hover:bg-accent group-hover:text-paper"
     >
       <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" aria-hidden>
         <path
@@ -56,7 +56,7 @@ function ViewCount({ views }: { views: number }) {
         />
       </svg>
       <span aria-hidden>{formatViews(Math.round(shown))}</span>
-      <span aria-hidden className="text-paper/50 transition-colors duration-500 group-hover:text-ink/75">
+      <span aria-hidden className="text-paper/50 transition-colors duration-500 group-hover:text-paper/75">
         views
       </span>
     </span>
@@ -106,7 +106,6 @@ function WorkCard({ project, index, alone, onOpen }: WorkCardProps) {
         onPointerLeave={stop}
         onFocus={start}
         onBlur={stop}
-        data-cursor="Play"
         aria-label={`Play ${project.title} for ${project.client}`}
         className="group block w-full text-left"
       >

@@ -5,6 +5,8 @@
   --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, monospace;
   --font-serif: 'Instrument Serif', ui-serif, Georgia, serif;
+  /* Heavy slanted caps matching the Before/After thumbnail lettering */
+  --font-label: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
 
   --color-ink: #09090a;
   --color-ink-2: #101012;
@@ -12,8 +14,8 @@
   --color-paper: #eeebe5;
   --color-mute: #8d8a83;
   --color-line: rgb(238 235 229 / 0.1);
-  /* Navy, lifted enough to stay readable on near-black */
-  --color-accent: #5577bd;
+  /* Signal red */
+  --color-accent: #d30000;
 
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-curtain: cubic-bezier(0.76, 0, 0.24, 1);
@@ -37,7 +39,7 @@
 
   ::selection {
     background: var(--color-accent);
-    color: var(--color-ink);
+    color: var(--color-paper);
   }
 
   :focus-visible {
@@ -153,8 +155,8 @@
 }
 
 @keyframes pulse-dot {
-  0%, 100% { box-shadow: 0 0 0 0 rgb(85 119 189 / 0.55); }
-  60% { box-shadow: 0 0 0 7px rgb(85 119 189 / 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgb(211 0 0 / 0.55); }
+  60% { box-shadow: 0 0 0 7px rgb(211 0 0 / 0); }
 }
 .live-dot {
   animation: pulse-dot 2s ease-out infinite;

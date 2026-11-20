@@ -23,16 +23,16 @@ function ServiceRow({ title, body, index }: { title: string; body: string; index
           aria-expanded={open}
           onClick={() => setOpen((o) => !o)}
           className={`relative flex w-full items-center gap-5 py-7 text-left transition-[color,padding] duration-500 ease-expo md:gap-10 md:py-9 ${
-            open ? 'text-ink md:px-6' : 'text-paper'
+            open ? 'text-paper md:px-6' : 'text-paper'
           }`}
         >
-          <span className={`font-mono text-xs transition-colors duration-500 ${open ? 'text-ink/75' : 'text-accent'}`}>
+          <span className={`font-mono text-xs transition-colors duration-500 ${open ? 'text-paper/75' : 'text-accent'}`}>
             0{index + 1}
           </span>
           <span className="flex-1 text-[clamp(1.6rem,4.2vw,3.75rem)] leading-none font-medium tracking-[-0.04em]">{title}</span>
           <span
             className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-[transform,border-color] duration-700 ease-expo md:h-14 md:w-14 ${
-              open ? 'rotate-45 border-ink/30' : 'border-line'
+              open ? 'rotate-45 border-paper/40' : 'border-line'
             }`}
             aria-hidden
           >
@@ -45,7 +45,7 @@ function ServiceRow({ title, body, index }: { title: string; body: string; index
           className={`relative grid transition-[grid-template-rows] duration-700 ease-expo ${open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
         >
           <div className="overflow-hidden">
-            <p className="max-w-xl pb-8 pl-9 text-base leading-relaxed text-ink md:pb-10 md:pl-[4.5rem] md:text-lg">{body}</p>
+            <p className="max-w-xl pb-8 pl-9 text-base leading-relaxed text-paper md:pb-10 md:pl-[4.5rem] md:text-lg">{body}</p>
           </div>
         </div>
       </div>

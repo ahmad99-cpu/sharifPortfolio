@@ -54,7 +54,6 @@ export default function VideoModal({ item, open, onClose }: VideoModalProps) {
         aria-label="Close video"
         tabIndex={-1}
         onClick={onClose}
-        data-cursor="Close"
         className={`absolute inset-0 bg-ink/90 backdrop-blur-xl transition-opacity duration-500 ${visible ? 'opacity-100' : 'opacity-0'}`}
       />
 
@@ -83,7 +82,6 @@ export default function VideoModal({ item, open, onClose }: VideoModalProps) {
         </div>
 
         <div
-          data-cursor="hide"
           className={`relative w-full overflow-hidden rounded-xl bg-ink-3 shadow-[0_40px_120px_-20px_rgb(0_0_0/0.8)] ${
             portrait ? 'aspect-[9/16]' : 'aspect-video'
           }`}

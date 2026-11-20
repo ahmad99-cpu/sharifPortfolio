@@ -7,7 +7,6 @@ interface MagneticButtonProps {
   onClick?: (e: MouseEvent) => void
   variant?: 'solid' | 'ghost'
   className?: string
-  cursor?: string
   type?: 'button' | 'submit'
 }
 
@@ -26,7 +25,6 @@ export default function MagneticButton({
   onClick,
   variant = 'solid',
   className = '',
-  cursor,
   type = 'button',
 }: MagneticButtonProps) {
   const ref = useMagnetic<HTMLAnchorElement & HTMLButtonElement>(0.3)
@@ -37,7 +35,7 @@ export default function MagneticButton({
         aria-hidden
         className="absolute inset-0 translate-y-full rounded-[inherit] bg-accent transition-transform duration-500 ease-(--ease-expo) group-hover:translate-y-0"
       />
-      <span className="relative z-10 flex items-center gap-3 transition-colors duration-300 group-hover:text-ink">
+      <span className="relative z-10 flex items-center gap-3 transition-colors duration-300 group-hover:text-paper">
         {children}
       </span>
     </>
@@ -46,7 +44,6 @@ export default function MagneticButton({
   const props = {
     ref,
     className: `${base} ${variants[variant]} ${className}`,
-    'data-cursor': cursor,
   }
 
   if (href) {

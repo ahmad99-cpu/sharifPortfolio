@@ -1,7 +1,7 @@
 import { useEffect, useRef, type CSSProperties } from 'react'
 import { showreel, site } from '../data/content'
 import { scrollToTarget } from '../lib/scroll'
-import { toTimecode } from '../lib/timecode'
+import HeroBackground from './HeroBackground'
 import { RevealLines } from './ui/Reveal'
 import MagneticButton, { Arrow, PlayIcon } from './ui/MagneticButton'
 
@@ -13,20 +13,6 @@ interface HeroProps {
 export default function Hero({ ready, onPlayReel }: HeroProps) {
   const sectionRef = useRef<HTMLElement>(null)
   const mediaRef = useRef<HTMLDivElement>(null)
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const timecodeRef = useRef<HTMLSpanElement>(null)
-
-  // Live timecode read straight off the background video.
-  useEffect(() => {
-    let raf = 0
-    const tick = () => {
-      const v = videoRef.current
-      if (v && timecodeRef.current) timecodeRef.current.textContent = `TC ${toTimecode(v.currentTime)}`
-      raf = requestAnimationFrame(tick)
-    }
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [])
 
   // Footage drifts and dims as the hero scrolls away.
   useEffect(() => {
@@ -62,19 +48,9 @@ export default function Hero({ ready, onPlayReel }: HeroProps) {
     <section ref={sectionRef} id="top" className="relative flex min-h-[100svh] flex-col overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
         <div ref={mediaRef} className="absolute inset-0 scale-[1.08] will-change-transform">
-          <video
-            ref={videoRef}
-            className={`h-full w-full object-cover transition-[filter,transform] duration-[2400ms] ease-expo ${
-              ready ? 'blur-0' : 'scale-110 blur-md'
-            }`}
-            src={showreel.background.src}
-            poster={showreel.background.poster}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            aria-hidden
+          <HeroBackground
+            media={showreel.background}
+            className={`transition-[filter,transform] duration-[2400ms] ease-expo ${ready ? 'blur-0' : 'scale-110 blur-md'}`}
           />
         </div>
         <div className="absolute inset-0 bg-ink/55" />
@@ -121,7 +97,7 @@ export default function Hero({ ready, onPlayReel }: HeroProps) {
             5+ years of cutting, grading and sound design behind every frame.
           </p>
           <div className="flex flex-wrap items-center gap-3" style={fade(700)}>
-            <MagneticButton onClick={onPlayReel} cursor="Play">
+            <MagneticButton onClick={onPlayReel}>
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-ink text-paper transition-colors duration-300 group-hover:bg-paper group-hover:text-ink">
                 <PlayIcon className="ml-px h-2.5 w-2.5" />
               </span>
@@ -139,23 +115,6 @@ export default function Hero({ ready, onPlayReel }: HeroProps) {
             </MagneticButton>
           </div>
         </div>
-      </div>
-
-      {/* Bottom status bar, like a monitor overlay */}
-      <div
-        className="relative z-10 mx-auto flex w-full max-w-[1600px] items-center justify-between border-t border-line px-5 py-4 font-mono text-[11px] tracking-[0.14em] text-mute uppercase md:px-10"
-        style={fade(850)}
-      >
-        <span ref={timecodeRef} className="tabular-nums text-paper/80">
-          TC {toTimecode(0)}
-        </span>
-        <span className="hidden md:inline">4K · 25 fps · Rec.709</span>
-        <span className="flex items-center gap-3">
-          Scroll
-          <span className="relative h-6 w-px overflow-hidden bg-line">
-            <span className="absolute inset-x-0 top-0 h-2 animate-[scroll-cue_1.8s_var(--ease-expo)_infinite] bg-paper" />
-          </span>
-        </span>
       </div>
     </section>
   )
